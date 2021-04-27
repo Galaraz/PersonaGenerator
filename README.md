@@ -8,7 +8,7 @@ A simple application that generates names and url for each name
 
 * ReactJs - javascript stack chosen for front end
 * Axio - for communication with API
-* Propria API - provides all the information of the names that we will need both on the front and the mobile
+* API itself - provides all the information of the names that we will need both on the front and the mobile
 * ContextAPI - method that I believe to be practical to deal with the general state of the application
 
 

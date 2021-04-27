@@ -6,7 +6,7 @@ const PersonaRoute = Router();
 PersonaRoute
   .get('/', PersonaController.getAllPersonas)
   .post('/', PersonaController.createPersona);
-PersonaRoute 
-  .get('/:id', PersonaController.getOnePersona)  
+/* PersonaRoute 
+  .get('/:id', PersonaController.getOnePersona)   */
 
   module.exports = PersonaRoute;

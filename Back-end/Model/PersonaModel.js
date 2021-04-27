@@ -8,9 +8,9 @@ const getAllPersonas = () => {
   );
 };
 
-const findPersonaByName = (productName) => {
+const findPersonaByName = (Name) => {
   return connection().then(
-    db => db.collection('persona').find({ name: productName }).toArray()
+    db => db.collection('persona').find({ name: Name }).toArray()
   );
 };
 

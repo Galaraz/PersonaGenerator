@@ -18,5 +18,17 @@ const createPersona = async (req, res ) => {
   }
 };
 
+const getAllPersonas = async (res,_req) => {
+  console.log('[PERSONA CONTROLLER] : THE METHOD CALLED ALL PERSONAS');
+try{
+  const result = await PersonaService.getAllPersonas();
+  return res.status(StatusCodes.OK).json(result);
+}
+catch(error){
+  console.log(`[PRODUCTS CONTROLLER] : call => ${error}`);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
+}
+};
 
-module.exports = { createPersona };
+
+module.exports = { createPersona, getAllPersonas };

@@ -1,10 +1,10 @@
-const ProductModel = require('../Model/ProductModel');
+const PersonaModel = require('../Model/PersonaModel');
 const {StatusCodes} = require('http-status-codes');
-const Ultils = require('../Helpers/Ultils');
+const Utils = require('../Helpers/Utils');
 
 
 const createPersona = async (name) => {
-  if (!await Ultils.validName(name)) {
+  if (!await Utils.validName(name)) {
     return {
       isError: true,
       err:{
@@ -16,28 +16,28 @@ const createPersona = async (name) => {
     };
   };
 
-  const nameResult = await ProductModel.findProductByName(name);
+  const nameResult = await PersonaModel.findPersonaByName(name);
 
-  if (!await Ultils.nameExist(nameResult)) {
+  if (!await Utils.nameExist(nameResult)) {
     return {
       isError: true,
       err:{
         code: 'invalid_data',
-        message: 'Product already exists',
+        message: 'Persona already exists',
       },
       status: StatusCodes.UNPROCESSABLE_ENTITY,
 
     };
   }
 
-  const result = await PersonaModel.createProduct(name);
+  const result = await PersonaModel.createPersona(name);
 
   return  result;
 };
 
 const getAllPersonas = async () => {
   const getInput = await PersonaModel.getAllPersonas();
-  const result = { products: [...getInput]};
+  const result = { personas: [...getInput]};
   return result;
 };
 
@@ -50,9 +50,8 @@ const getProductByName = async () => {};
 
 
 const updateById = async (id, name, quantity) => {
-  if (!Ultils.validName(name)) {
+  if (!Utils.validName(name)) {
     return {
-      isError: true,
       err:{
         code: 'invalid_data',
         message: '"name" length must be at least 5 characters long',
